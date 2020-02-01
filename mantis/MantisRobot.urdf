@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<robot  name="mantis" >
+ <link  name="world" />
+ <joint  name="world_mantis_joint"  type="fixed" >
+  <origin  xyz="0 0 0"  rpy="0 0 0" />
+  <parent  link="world" />
+  <child  link="mantis_link_0" />
+ </joint>
+ <link  name="mantis_link_0" >
+  <inertial >
+   <origin  xyz="0.0 0.0 0.0"  rpy="0 0 0" />
+   <mass  value="5" />
+   <inertia  ixy="0"  izz="0"  iyz="0"  iyy="0"  ixx="0"  ixz="0.0" />
+  </inertial>
+  <visual >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_0.stl" />
+   </geometry>
+   <material  name="Grey" />
+  </visual>
+  <collision >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_0.stl" />
+   </geometry>
+   <material  name="Grey" />
+  </collision>
+ </link>
+ <joint  name="mantis_joint_1"  type="revolute" >
+  <parent  link="mantis_link_0" />
+  <child  link="mantis_link_1" />
+  <origin  xyz="0.0 0.0 0.0"  rpy="0 0 0" />
+  <axis  xyz="0 0 1" />
+  <limit  effort="300"  velocity="10"  lower="-3.141592653589793"  upper="3.141592653589793" />
+  <safety_controller  soft_lower_limit="-2.9670597283903604"  k_position="100"  soft_upper_limit="2.9670597283903604"  k_velocity="2" />
+  <dynamics  damping="0.5" />
+ </joint>
+ <link  name="mantis_link_1" >
+  <inertial >
+   <origin  xyz="0.0 0.0 0.0"  rpy="0 0 0" />
+   <mass  value="4" />
+   <inertia  ixy="1"  izz="0.02"  iyz="0"  iyy="0.0"  ixx="0"  ixz="0" />
+  </inertial>
+  <visual >
+   <origin  xyz="0 0 0.0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_1.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </visual>
+  <collision >
+   <origin  xyz="0 0 0.0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_1.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </collision>
+ </link>
+ <joint  name="mantis_joint_2"  type="revolute" >
+  <parent  link="mantis_link_1" />
+  <child  link="mantis_link_2" />
+  <origin  xyz="0.0 0.0 0.297"  rpy="0 0 0" />
+  <axis  xyz="1 0 0" />
+  <limit  effort="300"  velocity="10"  lower="-2.0943951023931953"  upper="2.0943951023931953" />
+  <safety_controller  soft_lower_limit="-1.7453292519943295"  k_position="100"  soft_upper_limit="1.7453292519943295"  k_velocity="2" />
+  <dynamics  damping="0.5" />
+ </joint>
+ <link  name="mantis_link_2" >
+  <inertial >
+   <origin  xyz="0 0.0 0.0"  rpy="0 0 0" />
+   <mass  value="4" />
+   <inertia  ixy="0"  izz="0.0"  iyz="0"  iyy="0.0"  ixx="0.0"  ixz="0.0" />
+  </inertial>
+  <visual >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_2.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </visual>
+  <collision >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_2.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </collision>
+ </link>
+ <joint  name="mantis_joint_3"  type="revolute" >
+  <parent  link="mantis_link_2" />
+  <child  link="mantis_link_3" />
+  <origin  xyz="0.0 0.0 0.225"  rpy="0 0 0" />
+  <axis  xyz="1 0 0" />
+  <limit  effort="300"  velocity="10"  lower="-2.2689280275926285"  upper="2.2689280275926285" />
+  <safety_controller  soft_lower_limit="-2.0943951023931953"  k_position="100"  soft_upper_limit="2.0943951023931953"  k_velocity="2" />
+  <dynamics  damping="0.5" />
+ </joint>
+ <link  name="mantis_link_3" >
+  <inertial >
+   <origin  xyz="0.0 0.0 0.0"  rpy="0 0 0" />
+   <mass  value="3" />
+   <inertia  ixy="0"  izz="0.0"  iyz="0"  iyy="0.0"  ixx="0.0"  ixz="0" />
+  </inertial>
+  <visual >
+   <origin  xyz="0 0.0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_3.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </visual>
+  <collision >
+   <origin  xyz="0 0.0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_3.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </collision>
+ </link>
+ <joint  name="mantis_joint_4"  type="revolute" >
+  <parent  link="mantis_link_3" />
+  <child  link="mantis_link_4" />
+  <origin  xyz="0.0 0.0 0.0"  rpy="0 0 0" />
+  <axis  xyz="0 0 1" />
+  <limit  effort="300"  velocity="10" />
+  <safety_controller  k_position="100"  k_velocity="2" />
+  <dynamics  damping="0.5" />
+ </joint>
+ <link  name="mantis_link_4" >
+  <inertial >
+   <origin  xyz="0.0 0.0 0.0"  rpy="0 0 0" />
+   <mass  value="2.7" />
+   <inertia  ixy="0"  izz="0.0"  iyz="0"  iyy="0.0"  ixx="0.03"  ixz="0" />
+  </inertial>
+  <visual >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_4.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </visual>
+  <collision >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_4.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </collision>
+ </link>
+ <joint  name="mantis_joint_5"  type="revolute" >
+  <parent  link="mantis_link_4" />
+  <child  link="mantis_link_5" />
+  <origin  xyz="0.0 0.0 0.228855"  rpy="0 0 0" />
+  <axis  xyz="1 0 0" />
+  <limit  effort="300"  velocity="10"  lower="-2.2689280275926285"  upper="2.2689280275926285" />
+  <safety_controller  soft_lower_limit="-2.0943951023931953"  k_position="100"  soft_upper_limit="2.0943951023931953"  k_velocity="2" />
+  <dynamics  damping="0.5" />
+ </joint>
+ <link  name="mantis_link_5" >
+  <inertial >
+   <origin  xyz="0.0 0.0 0.0"  rpy="0 0 0" />
+   <mass  value="1.7" />
+   <inertia  ixy="0"  izz="0.0"  iyz="0"  iyy="0.0"  ixx="0.0"  ixz="0" />
+  </inertial>
+  <visual >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_5.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </visual>
+  <collision >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_5.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </collision>
+ </link>
+ <joint  name="mantis_joint_6"  type="revolute" >
+  <parent  link="mantis_link_5" />
+  <child  link="mantis_link_6" />
+  <origin  xyz="0.0 0.0 0.047"  rpy="0 0 0" />
+  <axis  xyz="0 0 1" />
+  <limit  effort="300"  velocity="10" />
+  <safety_controller  k_position="100"  k_velocity="2" />
+  <dynamics  damping="0.5" />
+ </joint>
+ <link  name="mantis_link_6" >
+  <inertial >
+   <origin  xyz="0.0 0.0 0.0"  rpy="0 0 0" />
+   <mass  value="1.8" />
+   <inertia  ixy="0"  izz="0.0"  iyz="0"  iyy="0.0"  ixx="0.0"  ixz="0" />
+  </inertial>
+  <visual >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_6.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </visual>
+  <collision >
+   <origin  xyz="0 0 0" />
+   <geometry >
+    <mesh  filename="./mantis/visual/link_6.stl" />
+   </geometry>
+   <material  name="Orange" />
+  </collision>
+ </link>
+ <joint  name="tool0_joint"  type="fixed" >
+  <parent  link="mantis_link_6" />
+  <child  link="mantis_link_ee" />
+  <origin  xyz="0 0 0.04"  rpy="0 -1.5707963267948966 0" />
+ </joint>
+ <link  name="mantis_link_ee" />
+</robot>
+
