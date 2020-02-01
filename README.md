@@ -1,6 +1,8 @@
 # mantisBullet
 pybullet example and urdf files for the mantis robot arm 
 
+![Mantis Robot Arm ](img/mantisRobot.PNG)
+
 there are simplified stl files of the mantis robot arm in the ``` ./mantis/visual/link_X.stl``` folder. Each stl origin is the origin of it's link. So no creasy transformations are needed. Right now there are no special collision models. 
 
 
