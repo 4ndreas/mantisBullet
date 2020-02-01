@@ -63,7 +63,7 @@ def scale(value):
 
 def main():
   p.setRealTimeSimulation(1)
-  p.setGravity(0, 0, -1) # we don't use gravity yet
+  p.setGravity(0, 0, 0) # we don't use gravity yet
 
 
   # debug colors only for show
@@ -95,6 +95,7 @@ def main():
     loop = 0
     hasPrevPose = 0
     trailDuration = 15
+    targetSelected = False
 
     distance = 5
     yaw = 90
@@ -102,25 +103,28 @@ def main():
     motorDir = [1,-1,1,1,1,1]
 
     while (p.isConnected()):
-      time.sleep(1. / 240.)  # set to 40 fps
+      time.sleep(1. / 240.)  # set to 240 fps
       p.stepSimulation()
-       
 
       # get target positon
       targetPos, targetOrn = p.getBasePositionAndOrientation(target)
       # do Inverse Kinematics
+
       # jointT = p.calculateInverseKinematics(body, EndEffectorIndex, targetPos, targetOrn)
       jointT = p.calculateInverseKinematics(body, EndEffectorIndex, targetPos, orn)
+
       # set Robot Joints
       p.setJointMotorControlArray(body,[1,2,3,4,5,6] , controlMode=p.POSITION_CONTROL , targetPositions=jointT )
-      # p.resetBasePositionAndOrientation(target, [tx, ty, tz ], orn)
-          
 
-      # generates the trail for debug only
-      # optional
+      
+      # reduce the output speed to 1/10 of the simulation speed
+      # ~24 fps
       loop +=1
       if loop > 10:
         loop = 0
+
+        # sends data to the robot over ethernet/UDP
+        # just a simple string with the motor number and the angle positon in 12 bit range (0-4096)
 
         data_string = ""
         for i in range ( 1, EndEffectorIndex):
@@ -129,6 +133,8 @@ def main():
 
         transfer_socket.sendto(bytes(data_string, "utf-8"), (transfer_ip, transfer_port))
 
+        # generates the trail for debug only
+        # optional
         ls = p.getLinkState(body, EndEffectorIndex)
         targetPos, targetOrn = p.getBasePositionAndOrientation(target)
         if (hasPrevPose):
@@ -140,9 +146,14 @@ def main():
 
       # get mouse events
       # changes color of the object clickt on and prints some info
-      # optional
       mouseEvents = p.getMouseEvents()
       for e in mouseEvents:
+        if ((e[0] == 2) and (e[3] == 0) and (e[4] & p.KEY_WAS_RELEASED) and (targetSelected == True) ):
+          # after mouse lost reset posion to prevent the target from floting around
+           targetSelected = False
+           targetPos, targetOrn = p.getBasePositionAndOrientation(target)
+           p.resetBasePositionAndOrientation(target, targetPos, targetOrn)
+           
         if ((e[0] == 2) and (e[3] == 0) and (e[4] & p.KEY_WAS_TRIGGERED)):
           mouseX = e[1]
           mouseY = e[2]
@@ -152,6 +163,8 @@ def main():
             hit = rayInfo[l]
             objectUid = hit[0]
             jointUid = hit[1]
+            if( objectUid == target):
+               targetSelected = True
             if (objectUid >= 1):
               # this is for debug click on an object to get id 
               # oject will change color this has no effect
