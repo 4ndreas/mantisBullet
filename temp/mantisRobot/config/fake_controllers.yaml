@@ -1,0 +1,9 @@
+controller_list:
+  - name: fake_mantis_arm_controller
+    joints:
+      - mantis_joint_1
+      - mantis_joint_2
+      - mantis_joint_3
+      - mantis_joint_4
+      - mantis_joint_5
+      - mantis_joint_6

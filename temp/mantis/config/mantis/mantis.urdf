@@ -1,0 +1,116 @@
+<robot name="mantis_robot">
+
+    <!-- export stl from inventor in m -->
+
+    <!-- /mnt/c/ros/mantis/mantis.urdf -->
+
+  <link name="link1" >
+          <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <!-- <mesh filename="package://moveit_resources/panda_description/meshes/visual/link0.dae" /> -->
+                <mesh filename="file:///mnt/c/ros/mantis/Mantis_Robot_R1.stl" />
+            </geometry>
+        </visual>
+    </link>
+  <link name="link2" >
+          <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <!-- <mesh filename="package://moveit_resources/panda_description/meshes/visual/link0.dae" /> -->
+                <mesh filename="file:///mnt/c/ros/mantis/Mantis_Robot_R2.stl" />
+            </geometry>
+        </visual>
+    </link>
+  <link name="link3" >
+          <visual>
+            <origin rpy="0 0 0" xyz="0 0 -0.297"/>
+            <geometry>
+                <!-- <mesh filename="package://moveit_resources/panda_description/meshes/visual/link0.dae" /> -->
+                <mesh filename="file:///mnt/c/ros/mantis/Mantis_Robot_R3.stl" />
+            </geometry>
+        </visual>
+    </link>
+  <link name="link4" >
+          <visual>
+            <origin rpy="0 0 0" xyz="0 0 -0.522"/>
+            <geometry>
+                <!-- <mesh filename="package://moveit_resources/panda_description/meshes/visual/link0.dae" /> -->
+                <mesh filename="file:///mnt/c/ros/mantis/Mantis_Robot_R4.stl" />
+            </geometry>
+        </visual>
+    </link>
+  <link name="link5" >
+          <visual>
+            <origin rpy="0 0 0" xyz="0 0 -0.522"/>
+            <geometry>
+                <!-- <mesh filename="package://moveit_resources/panda_description/meshes/visual/link0.dae" /> -->
+                <mesh filename="file:///mnt/c/ros/mantis/Mantis_Robot_R5.stl" />
+            </geometry>
+        </visual>
+    </link>
+  <link name="link6" >
+          <visual>
+            <origin rpy="0 0 0" xyz="0 0 -0.750855"/>
+            <geometry>
+                <!-- <mesh filename="package://moveit_resources/panda_description/meshes/visual/link0.dae" /> -->
+                <mesh filename="file:///mnt/c/ros/mantis/Mantis_Robot_R6.stl" />
+            </geometry>
+        </visual>
+    </link>
+  <link name="link7" >
+          <visual>
+            <origin rpy="0 0 0" xyz="0 0 -0.750855"/>
+            <geometry>
+                <!-- <mesh filename="package://moveit_resources/panda_description/meshes/visual/link0.dae" /> -->
+                <mesh filename="file:///mnt/c/ros/mantis/Mantis_Robot_R7.stl" />
+            </geometry>
+        </visual>
+    </link>
+
+  <joint name="joint1" type="continuous">
+    <!-- <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973" /> -->
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <!-- <limit effort="87" lower="-2.9671" upper="2.9671" velocity="2.3925" /> -->
+  </joint>
+
+  <joint name="joint2" type="continuous">
+    <parent link="link2"/>
+    <child link="link3"/>
+    <origin xyz="0 0 0.297" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+  </joint>
+
+  <joint name="joint3" type="continuous">
+    <parent link="link3"/>
+    <child link="link4"/>
+    <origin xyz="0 0 0.225" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+  </joint>
+
+  <joint name="joint4" type="continuous">
+    <parent link="link4"/>
+    <child link="link5"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+   <joint name="joint5" type="continuous">
+    <parent link="link5"/>
+    <child link="link6"/>
+    <origin xyz="0 0 0.228855" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+  </joint> 
+
+  <joint name="joint6" type="continuous">
+    <parent link="link6"/>
+    <child link="link7"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+
+</robot>

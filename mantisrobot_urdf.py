@@ -13,7 +13,7 @@ from odio_urdf import *
 
 
 filepath = ""
-robot_name = "MantisRobot"
+robot_name = "mantisrobot"
 
 PI = math.pi
 safety_controller_k_pos = 100
@@ -21,8 +21,8 @@ safety_controller_k_vel = 2
 joint_damping = 0.5
 max_effort = 300
 max_velocity = 10
-# filepath = "package://iiwa_description/meshes/iiwa7/"
-filepath = "./mantis/"
+filepath = "package://mantisrobot/"
+# filepath = "./mantisrobot/"
 
 def link(N,robot_name,origin,mass,I,material,geom_origin):
     """
@@ -80,7 +80,7 @@ def joint(N,robot_name,origin,limit=None,safe=None, axis="0 0 1"):
 
 def mantis_main(parent, hardware_interface, robot_name):
     """
-        Main definition of the iiwa7. 
+        Main definition of the mantis robot arm. 
     """
     ret = Group(
         Joint(parent+"_"+robot_name+"_joint", Origin(xyz="0 0 0", rpy="0 0 0"),
@@ -165,7 +165,7 @@ if __name__ == "__main__":
     )    
 
 
-    f= open("mantis\\%s.urdf" % robot_name ,"w+")
+    f= open("mantisrobot\\%s.urdf" % robot_name ,"w+")
     print(mantis, file=f)
     f.close() 
     print(mantis)

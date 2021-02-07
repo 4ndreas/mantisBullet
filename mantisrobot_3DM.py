@@ -1,5 +1,3 @@
-
-
 import pybullet as p
 import pybullet_utils.bullet_client as bc
 import pybullet
@@ -78,11 +76,13 @@ def main():
   currentColor = 0
 
   try:
+    print("open SpaceMouse")
     print(spacenavigator.list_devices())
     success = spacenavigator.open()
-
     body = p.getBodyUniqueId(mantis_robot)
     EndEffectorIndex = p.getNumJoints(body) -1
+    
+    print("")
     print("EndEffectorIndex %i" % EndEffectorIndex)
 
     # i = 0

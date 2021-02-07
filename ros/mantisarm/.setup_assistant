@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: mantisrobot
+    relative_path: mantisrobot_gripper.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/mantis.srdf
+  CONFIG:
+    author_name: Andreas Hoelldorfer
+    author_email: 3xecutor@gmail.com
+    generated_timestamp: 1612729100
